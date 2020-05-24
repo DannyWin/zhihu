@@ -1,21 +1,21 @@
 <template>
   <div>
     <!-- <ICard :items="items" :label="'title'" :itemBgColor="'lightgray'"></ICard> -->
-    <RecommandItem
+    <RecQuestion
       v-for="(item, index) in items"
       :key="index"
-      :data="item"
-    ></RecommandItem>
+      :question="item"
+    ></RecQuestion>
   </div>
 </template>
 
 <script>
-import RecommandItem from "@/components/RecommandItem.vue";
+import RecQuestion from "@/components/question/RecQuestion.vue";
 import { apiGetQuestionRecommanded } from "../axios/api";
 export default {
   name: "Home",
   components: {
-    RecommandItem
+    RecQuestion
   },
   data() {
     return {
@@ -35,6 +35,7 @@ export default {
     const params = { date: date };
     apiGetQuestionRecommanded(params).then(res => {
       if (res.status == 200) {
+        console.log(res.data.questions)
         this.items = res.data.questions;
       }
     });

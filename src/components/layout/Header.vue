@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <Question v-if="showQuestionCard" @closeQuestionCard="closeQuestionCard"> </Question>
+    <AskQuestion v-if="showQuestionCard" @closeQuestionCard="closeQuestionCard"> </AskQuestion>
     <div v-if="top" style="margin:auto;border:1px solid red;text-align:center;">
       <el-menu
         mode="horizontal"
@@ -58,10 +58,10 @@
 </template>
 
 <script>
-import Question from "./Question.vue";
+import AskQuestion from "../question/AskQuestion.vue";
 export default {
   name: "HelloWorld",
-  components: { Question },
+  components: { AskQuestion },
   props: {
     msg: String
   },
@@ -87,7 +87,7 @@ export default {
 <style scoped lang="less">
 .header {
   margin: auto;
-  width: 68%;
+  width: 1000px; //68%
   #nav {
     height: 50px;
     line-height: 50px;

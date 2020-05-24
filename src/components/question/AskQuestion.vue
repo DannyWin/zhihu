@@ -81,9 +81,9 @@
 </template>
 
 <script>
-import { apiGetTopics, apiAddQuestion } from "../axios/api.js";
+import { apiGetTopics, apiAddQuestion } from "@/axios/api.js";
 export default {
-  name: "Question",
+  name: "AskQuestion",
   props: {
     data: Object
   },

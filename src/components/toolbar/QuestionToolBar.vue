@@ -28,7 +28,7 @@ export default {
   name: "QuestionToolBar",
   components: { Comment, Share, Accuse },
   props: {
-    agreeCount: [String, Number],
+    voteCount: [String, Number],
     commentCount: [String, Number],
     actions: {
       type: Array,
@@ -47,8 +47,8 @@ export default {
     expandComment(flag) {
       this.$emit("expandComment", flag);
     },
-    changeAgreeCount(val) {
-      this.$emit("changeAgreeCount", val);
+    changeVoteCount(val) {
+      this.$emit("changeVoteCount", val);
     },
     enterBtn() {
       if (this.btnText == "已关注") {

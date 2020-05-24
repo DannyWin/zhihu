@@ -1,17 +1,17 @@
 <template>
   <div>
-    <HotItem v-for="(item, index) in items" :key="index" :itemData="itemData">
-    </HotItem>
+    <HotQuestion v-for="(item, index) in items" :key="index" :itemData="itemData">
+    </HotQuestion>
   </div>
 </template>
 
 <script>
-import HotItem from "@/components/HotItem.vue";
+import HotQuestion from "@/components/question/HotQuestion.vue";
 
 export default {
   name: "Hot",
   components: {
-    HotItem
+    HotQuestion
   },
   data() {
     return {

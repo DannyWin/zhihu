@@ -1,53 +1,63 @@
 <template>
-  <el-popover placement="bottom" width="350" height="200" trigger="hover">
-    <div slot="reference" class="popupHeader">
-      <el-avatar shape="square" :size="30" fit="fit" :src="user.avatar"></el-avatar>
-      <div>{{user.name}}</div>
-      <div>{{user.introduce}}</div>
-    </div>
-    <div class="popupContent">
-      <el-row>
-        <el-col>
-          <el-avatar shape="square" :size="60" fit="fit" :src="user.avatar"></el-avatar>
-          <div>{{user.name}}</div>
-          <div>{{user.introduce}}</div>
-        </el-col>
-      </el-row>
-      <el-row class="extend">
-        <el-col :span="8">
-          <el-link :href="'/user/'+user.id+'/answer'" :underline="false">
-            回答
-            <p>111</p>
-          </el-link>
-        </el-col>
-        <el-col :span="8">
-          <el-link :href="'/user/'+user.id+'/article'" :underline="false">
-            文章
-            <p>111</p>
-          </el-link>
-        </el-col>
-        <el-col :span="8">
-          <el-link :href="'/user/'+user.id+'/follower'" :underline="false">
-            关注者
-            <p>111</p>
-          </el-link>
-        </el-col>
-      </el-row>
-      <el-row class="action">
-        <el-col>
-          <el-button type="primary">关注他</el-button>
-          <el-button>发私信</el-button>
-        </el-col>
-      </el-row>
-    </div>
-  </el-popover>
+    <el-popover placement="bottom" width="350" height="200" trigger="hover">
+        <div slot="reference" class="popupHeader">
+            <div v-if="simple">
+                <el-avatar shape="square" :size="30" fit="fit" :src="user.avatar"></el-avatar>
+                <div>{{user.name}}</div>
+            </div>
+            <div v-else>
+                <el-avatar shape="square" :size="30" fit="fit" :src="user.avatar"></el-avatar>
+                <div>{{user.name}}</div>
+                <div>{{user.introduce}}</div>
+            </div>
+        </div>
+        <div class="popupContent">
+            <el-row>
+                <el-col>
+                    <el-avatar shape="square" :size="60" fit="fit" :src="user.avatar"></el-avatar>
+                    <div>{{user.name}}</div>
+                    <div>{{user.introduce}}</div>
+                </el-col>
+            </el-row>
+            <el-row class="extend">
+                <el-col :span="8">
+                    <el-link :href="'/user/'+user.id+'/answer'" :underline="false">
+                        回答
+                        <p>111</p>
+                    </el-link>
+                </el-col>
+                <el-col :span="8">
+                    <el-link :href="'/user/'+user.id+'/article'" :underline="false">
+                        文章
+                        <p>111</p>
+                    </el-link>
+                </el-col>
+                <el-col :span="8">
+                    <el-link :href="'/user/'+user.id+'/follower'" :underline="false">
+                        关注者
+                        <p>111</p>
+                    </el-link>
+                </el-col>
+            </el-row>
+            <el-row class="action">
+                <el-col>
+                    <el-button type="primary">关注他</el-button>
+                    <el-button>发私信</el-button>
+                </el-col>
+            </el-row>
+        </div>
+    </el-popover>
 </template>
 
 <script>
 export default {
   name: "UserInfoCard",
   props: {
-    user: Object
+    user: Object,
+    simple:{
+      type:Boolean,
+      default:false
+    }
   }
 };
 </script>
@@ -55,30 +65,31 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .popupHeader {
-  .el-avatar {
-    float: left;
-    margin-right: 10px;
-  }
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+    .el-avatar {
+        float: left;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }
 
 .popupContent {
-  .el-avatar {
-    float: left;
-    margin-top: -30px;
-    margin-right: 10px;
-  }
-  .el-row {
-    margin-bottom: 20px;
-  }
-  .extend,
-  .action {
-    text-align: center;
-  }
+    .el-avatar {
+        float: left;
+        margin-top: -30px;
+        margin-right: 10px;
+    }
+    .el-row {
+        margin-bottom: 20px;
+    }
+    .extend,
+    .action {
+        text-align: center;
+    }
 }
 // .userInfoCard {
 //   width: 350px;

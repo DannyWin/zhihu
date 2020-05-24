@@ -8,7 +8,9 @@
       </div>
       <router-view></router-view>
     </div>
-    <el-aside class="mainRight"></el-aside>
+    <el-aside class="mainRight">
+      dsadas
+    </el-aside>
   </div>
 </template>
 
@@ -21,15 +23,21 @@ export default {
 <style lang="less">
 .main {
   margin: 10px auto;
-  width: 68%;
-  display: flex;
+  width: 1000px; //80%
   .mainLeft {
-    flex: 2;
+    width:800px;
     margin-right: 10px;
     background-color: white;
+    overflow: hidden;
   }
   .mainRight {
-    flex: 1;
+    width:200px;
+    float:right;
+  }
+  &:after{
+    content: '';
+    display:table;
+    clear:both;
   }
 }
 #nav {

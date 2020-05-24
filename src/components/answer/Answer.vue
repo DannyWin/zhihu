@@ -1,7 +1,7 @@
 <template>
   <div class="answer">
     <UserInfoCard :user="user"></UserInfoCard>
-    <div class="answerAgree">{{answer.agreeCount}}人赞同了该回答</div>
+    <div class="answerVote">{{answer.voteCount}}人赞同了该回答</div>
     <div class="answerMain">
       <div class="answerContent">{{content}}</div>
       <div class="answerDate">{{answer.date}}</div>
@@ -10,18 +10,18 @@
       <span>展开阅读全文</span>
     </div>
     <div class="answerToolBar">
-      <CommentToolBar :agreeCount="answer.agreeCount" :commentCount="answer.commentCount" @answerContract="answerContract"></CommentToolBar>
+      <AnswerToolBar :voteCount="answer.voteCount" :commentCount="answer.commentCount" @answerContract="answerContract"></AnswerToolBar>
     </div>
     <div class="answerSplit"></div>
   </div>
 </template>
 
 <script>
-import UserInfoCard from "../components/popup/UserInfoCard";
-import CommentToolBar from "../components/toolbar/CommentToolBar";
+import UserInfoCard from "../popup/UserInfoCard";
+import AnswerToolBar from "../toolbar/AnswerToolBar";
 export default {
   name: "Answer",
-  components: { UserInfoCard, CommentToolBar },
+  components: { UserInfoCard, AnswerToolBar },
   props: {
     answer: Object,
     user: Object
@@ -49,7 +49,7 @@ export default {
 .answer {
   @color: #8590a6;
   position: relative;
-  .answerAgree,
+  .answerVote,
   .answerDate {
     color: @color;
   }

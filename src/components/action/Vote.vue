@@ -2,7 +2,7 @@
   <div class="vote">
     <el-tag class="voteBtn" :effect="likeTagEffect" @click="likeIt">
       <i class="el-icon-caret-top"></i>
-      {{ btnText }}{{ count }}
+      {{ btnText }} {{ count }}
     </el-tag>
     <el-tag class="voteBtn" :effect="hateTagEffect" @click="hateIt">
       <i class="el-icon-caret-bottom"></i>
@@ -11,17 +11,19 @@
 </template>
 
 <script>
+import { apiVote } from "@/axios/api.js";
 export default {
-  name: "Agree",
+  name: "Vote",
   props: {
-    agreeCount: [String,Number]
+    voteData: Object,
+    voteCount: [String, Number]
   },
   data() {
     return {
       btnText: "赞同",
       likeTagEffect: "plain",
       hateTagEffect: "plain",
-      curCount:this.agreeCount
+      curCount: this.voteData.voteCount
     };
   },
   computed: {
@@ -41,22 +43,37 @@ export default {
         this.btnText = "已赞同";
         this.likeTagEffect = "dark";
         this.hateTagEffect = "plain";
-        this.curCount++;
-        this.$emit('changeAgreeCount',1);
+        this.vote(1);
+        this.$emit("changeVoteCount", this.curCount);
       } else {
         this.btnText = "赞同";
         this.likeTagEffect = "plain";
-        this.curCount--;
-        this.$emit('changeAgreeCount',-1);
+        this.vote(0);
+        this.$emit("changeVoteCount", this.curCount);
       }
     },
     hateIt() {
       if (this.hateTagEffect == "dark") {
         this.hateTagEffect = "plain";
+        this.vote(0);
       } else {
         this.hateTagEffect = "dark";
         this.likeTagEffect = "plain";
+        if (this.curCount > 0) {
+          this.vote(-1);
+        }
+        this.btnText = "赞同";
       }
+    },
+    vote(downUp) {
+      const type = this.voteData.type;
+      const targetId = this.voteData.targetId;
+      apiVote({ type, targetId, downUp }).then(res => {
+        if (res.status == 200) {
+          console.log(res.data)
+          this.curCount=res.data.voteCount;
+        }
+      });
     }
   }
 };

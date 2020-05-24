@@ -11,7 +11,7 @@
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Header.vue";
+import Header from "@/components/layout/Header.vue";
 
 export default {
   name: "Home",

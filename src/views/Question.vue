@@ -24,8 +24,8 @@
           </div>
           <div class="questionHeader-action">
             <QuestionToolBar
-              :agreeCount="this.data.agreeCount"
-              @changeAgreeCount="changeAgreeCount"
+              :voteCount="this.data.voteCount"
+              @changeVoteCount="changeVoteCount"
               :commentCount="this.data.comment.length"
               @expandComment="expandComment"
             ></QuestionToolBar>
@@ -73,7 +73,7 @@ import TopicCard from "../components/popup/TopicCard";
 import UserInfoCard from "../components/popup/UserInfoCard";
 import UserInfoCardSide from "../components/popup/UserInfoCardSide";
 import QuestionToolBar from "../components/toolbar/QuestionToolBar";
-import Answer from "../components/Answer";
+import Answer from "../components/answer/Answer";
 import { apiGetQuestion, apiGetQuestionAnswers } from "../axios/api";
 export default {
   name: "Question",
@@ -91,7 +91,7 @@ export default {
       commentExpand: false,
       showTopAnswer: true,
       data: {
-        agreeCount: 1000,
+        voteCount: 1000,
         comment: []
       },
       question: {
@@ -107,43 +107,43 @@ export default {
             content:
               "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
             date: "2020-04-15",
-            agreeCount: 100,
+            voteCount: 100,
             commentCount: 1000
           },
           {
             content: "啊啊啊啊啊啊",
             date: "2020-04-15",
-            agreeCount: 100,
+            voteCount: 100,
             commentCount: 1000
           },
           {
             content: "啊啊啊啊啊啊",
             date: "2020-04-15",
-            agreeCount: 100,
+            voteCount: 100,
             commentCount: 1000
           },
           {
             content: "啊啊啊啊啊啊",
             date: "2020-04-15",
-            agreeCount: 100,
+            voteCount: 100,
             commentCount: 1000
           },
           {
             content: "啊啊啊啊啊啊",
             date: "2020-04-15",
-            agreeCount: 100,
+            voteCount: 100,
             commentCount: 1000
           },
           {
             content: "啊啊啊啊啊啊",
             date: "2020-04-15",
-            agreeCount: 100,
+            voteCount: 100,
             commentCount: 1000
           },
           {
             content: "啊啊啊啊啊啊",
             date: "2020-04-15",
-            agreeCount: 100,
+            voteCount: 100,
             commentCount: 1000
           }
         ]
@@ -163,8 +163,8 @@ export default {
     expandComment(flag) {
       this.commentExpand = flag;
     },
-    changeAgreeCount(val) {
-      this.data.agreeCount += val;
+    changeVoteCount(val) {
+      this.data.voteCount += val;
     },
     showAllAnswer() {
       this.showTopAnswer = false;

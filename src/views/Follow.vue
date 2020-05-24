@@ -1,7 +1,10 @@
 <template>
   <div>
-    <FollowItem v-for="(item, index) in items" :key="index" :data="itemData">
-    </FollowItem>
+    <FollowItem
+      v-for="(item, index) in items"
+      :key="index"
+      :data="itemData"
+    ></FollowItem>
   </div>
 </template>
 

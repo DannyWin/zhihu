@@ -1,26 +1,22 @@
 <template>
   <div class="toolbar">
-    <Vote v-if="insert('Vote')" :voteData="voteData" @changeVoteCount="changeVoteCount"></Vote>
-    <Comment v-if="insert('Comment')" :commentCount="voteData.commentCount" @expandComment="expandComment"></Comment>
-    <Share v-if="insert('Share')"></Share>
-    <Fork v-if="insert('Fork')"></Fork>
-    <Enjoy v-if="insert('Enjoy')"></Enjoy>
+    <Like v-if="insert('Like')" :likeData="likeData" @changeLikeCount="changeLikeCount"></Like>
     <More></More>
   </div>
 </template>
 
 <script>
-import Vote from "../action/Vote";
-import Comment from "../action/Comment";
-import Fork from "../action/Fork";
-import Share from "../action/Share";
-import Enjoy from "../action/Enjoy";
+// import Vote from "../action/Vote";
+// import Comment from "../action/Comment";
+// import Fork from "../action/Fork";
+// import Share from "../action/Share";
+import Like from "../action/Like";
 import More from "../action/More";
 export default {
-  name: "CommentToolBar",
-  components: { Vote, Comment, Fork, Share, Enjoy, More },
+  name: "AnswerToolBar",
+  components: { Like, More },
   props: {
-    voteData: Object,
+    likeData: Object,
     actions: {
       type: Array,
       default() {
@@ -38,7 +34,7 @@ export default {
     expandComment(flag) {
       this.$emit("expandComment", flag);
     },
-    changeVoteCount(val) {
+    changeLikeCount(val) {
       this.$emit("changeVoteCount", val);
     }
   },

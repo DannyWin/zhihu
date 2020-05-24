@@ -28,5 +28,11 @@ export const apiGetQuestionRecommanded = (params) => {
   return axios.get(`/question`, {params}).then(res => res);
 };
 export const apiGetQuestionAnswers = params => {
-  return axios.get(`/question/${params.id}/answer`, {}).then(res => res);
+  return axios.get(`/question/${params.id}/answer`, {params}).then(res => res);
+};
+export const apiVote = params => {
+  return axios.post(`/vote`, params).then(res => res);
+};
+export const apiLike = params => {
+  return axios.post(`/like`, params).then(res => res);
 };
