@@ -2,8 +2,12 @@
     <el-popover placement="bottom" width="350" height="200" trigger="hover">
         <div slot="reference" class="popupHeader">
             <div v-if="simple">
-                <el-avatar shape="square" :size="30" fit="fit" :src="user.avatar"></el-avatar>
-                <div>{{user.name}}</div>
+                <div>
+                    <el-avatar shape="square" :size="30" fit="fit" :src="user.avatar"></el-avatar>
+                    <div>{{user.name}} <span v-if="replyToUser"> 回复 {{replyToUser.name}}</span></div>
+                </div>
+
+                <div style="float:right"> {{user.id}}</div>
             </div>
             <div v-else>
                 <el-avatar shape="square" :size="30" fit="fit" :src="user.avatar"></el-avatar>
@@ -51,14 +55,18 @@
 
 <script>
 export default {
-  name: "UserInfoCard",
-  props: {
-    user: Object,
-    simple:{
-      type:Boolean,
-      default:false
+    name: 'UserInfoCard',
+    props: {
+        user: Object,
+        replyToUser: {
+            type: Object,
+            default: null
+        },
+        simple: {
+            type: Boolean,
+            default: false
+        }
     }
-  }
 };
 </script>
 
@@ -71,7 +79,7 @@ export default {
         cursor: pointer;
     }
     &:after {
-        content: "";
+        content: '';
         display: table;
         clear: both;
     }

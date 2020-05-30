@@ -1,10 +1,12 @@
 <template>
     <div class="answer">
-        <UserInfoCard :user="this.answer.user" :simple="true" ></UserInfoCard>
-        <!-- <div>{{anserDate}}</div> -->
+        <UserInfoCard :user="this.answer.user" :simple="true"></UserInfoCard>
+        <div>{{this.answer.date}}</div>
         <div class="answerMain">
             <div class="answerContent">{{this.answer.content}}</div>
             <!-- <div class="answerDate">{{answerDate}}</div> -->
+            <Comment v-for="cmt in this.answer.comments" :key="cmt.id" :comment="cmt">
+            </Comment>
         </div>
         <!-- <div class="answerToolBar">
       <AnswerToolBar :voteCount="answer.voteCount" :commentCount="answer.commentCount" @answerContract="answerContract"></AnswerToolBar>
@@ -14,12 +16,13 @@
 </template>
 
 <script>
-import UserInfoCard from "../popup/UserInfoCard";
-import dateHelper from "@/common/dateHelper"
+import UserInfoCard from '../popup/UserInfoCard';
+import Comment from '../comment/Comment';
+import dateHelper from '@/common/dateHelper';
 //import AnswerToolBar from "../toolbar/AnswerToolBar";
 export default {
-    name: "RecAnswer",
-    components: { UserInfoCard },
+    name: 'RecAnswer',
+    components: { UserInfoCard, Comment },
     props: {
         answer: Object,
         user: Object
